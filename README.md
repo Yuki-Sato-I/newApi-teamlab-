@@ -42,6 +42,6 @@ json形式送信する.
 
 
 ## DELETE送信
-"https://ifive.sakura.ne.jp/yuki/yuki_goods.php?id=[ここに商品id]"
+"https://ifive.sakura.ne.jp/yuki/yuki_goods.php?id=1"
 
 id:消去したい商品id
