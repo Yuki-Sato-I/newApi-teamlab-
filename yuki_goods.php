@@ -24,7 +24,7 @@ switch ($method) {
             $count += 1;
             $sql .= " WHERE";
           }
-          $sql .= " title='{$title}'";
+          $sql .= " title= BINARY '{$title}'";
         }
         //id検索
         if(isset($_GET["id"])){
@@ -46,7 +46,7 @@ switch ($method) {
           }else{
             $sql .= " AND";
           }
-          $sql .= " shop='{$shop}'";
+          $sql .= " shop= BINARY '{$shop}'";
         }
         //価格帯検索
         if(isset($_GET["priceLower"]) && isset($_GET["priceUpper"])){

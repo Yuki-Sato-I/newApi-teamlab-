@@ -37,7 +37,7 @@ switch ($method) {
           }else{
             $sql .= " AND";
           }
-          $sql .= " name='{$name}'";
+          $sql .= " name= BINARY '{$name}'";
         }
 
         $stmt = $dbh->prepare($sql);
