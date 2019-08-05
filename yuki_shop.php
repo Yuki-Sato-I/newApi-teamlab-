@@ -1,11 +1,12 @@
 <?php
 require_once('yuki_db_connect.php');
-//ローカル用
-//$_POST = ["image" => null, "title" => "aaaa", "content" => "cccc", "price" => 12];
-//$_GET = ["priceLower" => 0];
+
 $dbh = db_connect();
 
 $method = $_SERVER["REQUEST_METHOD"];
+
+$limit = 10;
+$page  = 1;
 
 switch ($method) {
   case 'GET':
@@ -39,6 +40,14 @@ switch ($method) {
           }
           $sql .= " name= BINARY '{$name}'";
         }
+
+        //ページネーション
+        if(isset($_GET["page"])){
+          $page = (int)$_GET["page"];
+        }
+
+        $offset = ($page - 1) * $limit;
+        $sql .= " LIMIT {$offset}, {$limit}";
 
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
