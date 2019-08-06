@@ -2,7 +2,7 @@
 
 ## GET送信
 "https://ifive.sakura.ne.jp/yuki/yuki_goods.php"  
-クエリパラメータなしだと全件取得  
+クエリパラメータなしだと10件取得  
 クエリパラメータありだと条件にあった商品を抽出  
 
 id:商品id  
