@@ -23,7 +23,7 @@ switch ($method) {
             $count += 1;
             $sql .= " WHERE";
           }
-          $sql .= " title= BINARY '{$title}'";
+          $sql .= " title LIKE BINARY '%{$title}%'";
         }
         //id検索
         if(isset($_GET["id"])){
