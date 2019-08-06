@@ -6,7 +6,6 @@ $dbh = db_connect();
 $method = $_SERVER["REQUEST_METHOD"];
 
 $limit = 10;
-$page  = 1;
 
 switch ($method) {
   case 'GET':
@@ -41,13 +40,14 @@ switch ($method) {
           $sql .= " name= BINARY '{$name}'";
         }
 
+        $sql .= " ORDER BY created_at DESC";
+
         //ページネーション
         if(isset($_GET["page"])){
           $page = (int)$_GET["page"];
+          $offset = ($page - 1) * $limit;
+          $sql .= " LIMIT {$offset}, {$limit}";
         }
-
-        $offset = ($page - 1) * $limit;
-        $sql .= " LIMIT {$offset}, {$limit}";
 
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
